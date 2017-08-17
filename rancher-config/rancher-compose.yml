@@ -1,0 +1,16 @@
+version: '2'
+catalog:
+    name: Elasticsearch Cluster
+    version: 5.5.1-rancher1
+    description: Scalable Elasticsearch Cluster
+
+services:
+
+  es-master:
+    scale: 3
+
+  es-data:
+    scale: 3
+
+  es-client:
+    scale: 2
