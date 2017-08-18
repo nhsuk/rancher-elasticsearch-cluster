@@ -31,6 +31,16 @@ services:
             - IPC_LOCK
         volumes_from:
             - es-storage
+        logging:
+          driver: splunk
+          options:
+            splunk-url: ${SPLUNK_HEC_URL}
+            splunk-token: ${SPLUNK_HEC_TOKEN}
+            splunk-insecureskipverify: "true"
+            splunk-sourcetype: elasticsearch-master
+            splunk-verify-connection: "false"
+            tag: "{{`{{.ImageName}} {{.Name}} {{.FullID}}`}}"
+            splunk-format: json
 
     es-data:
         labels:
@@ -62,6 +72,16 @@ services:
             - es-storage
         depends_on:
             - es-master
+        logging:
+          driver: splunk
+          options:
+            splunk-url: ${SPLUNK_HEC_URL}
+            splunk-token: ${SPLUNK_HEC_TOKEN}
+            splunk-insecureskipverify: "true"
+            splunk-sourcetype: elasticsearch-data
+            splunk-verify-connection: "false"
+            tag: "{{`{{.ImageName}} {{.Name}} {{.FullID}}`}}"
+            splunk-format: json
 
     es-client:
         labels:
@@ -93,6 +113,16 @@ services:
             - es-storage
         depends_on:
             - es-master
+        logging:
+          driver: splunk
+          options:
+            splunk-url: ${SPLUNK_HEC_URL}
+            splunk-token: ${SPLUNK_HEC_TOKEN}
+            splunk-insecureskipverify: "true"
+            splunk-sourcetype: elasticsearch-client
+            splunk-verify-connection: "false"
+            tag: "{{`{{.ImageName}} {{.Name}} {{.FullID}}`}}"
+            splunk-format: json
 
     es-storage:
         labels:
