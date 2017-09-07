@@ -145,6 +145,7 @@ services:
         environment:
             - "SYSCTL_KEY=vm.max_map_count"
             - "SYSCTL_VALUE=262144"
+            - "KEEP_ALIVE=1"
 
 volumes:
   es-storage-volume:
