@@ -7,10 +7,4 @@ catalog:
 services:
 
   es-master:
-    scale: 3
-
-  es-data:
-    scale: 3
-
-  es-client:
-    scale: 2
+    scale: 5
