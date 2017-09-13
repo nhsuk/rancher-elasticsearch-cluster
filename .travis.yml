@@ -1,0 +1,4 @@
+services: docker
+
+script:
+  - bash ./scripts/deploy.sh
