@@ -69,3 +69,14 @@ services:
             - "SYSCTL_KEY=vm.max_map_count"
             - "SYSCTL_VALUE=262144"
             - "KEEP_ALIVE=1"
+
+    es-exporter:
+        image: justwatch/elasticsearch_exporter:1.0.1
+        stdin_open: true
+        tty: true
+        command:
+            - -es.uri=http://es-master:9200
+            - -es.all
+        labels:
+            io.rancher.container.pull_image: always
+            prometheus.port: '9108'
