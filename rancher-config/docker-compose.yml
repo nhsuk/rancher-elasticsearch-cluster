@@ -7,6 +7,11 @@ volumes:
 
 services:
 
+    es-client:
+        image: rancher/dns-service
+        links:
+        - es-master:es-master
+
     es-master:
         labels:
             io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
