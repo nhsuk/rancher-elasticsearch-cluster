@@ -1,9 +1,5 @@
 version: '2'
 
-volumes:
-  es-storage-volume:
-    driver: local
-
 services:
 
     es-client:
@@ -38,8 +34,6 @@ services:
         mem_swappiness: 0
         cap_add:
             - IPC_LOCK
-        volumes:
-            - es-storage:/usr/share/elasticsearch/data
         logging:
           driver: splunk
           options:
