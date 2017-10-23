@@ -46,8 +46,6 @@ services:
             splunk-format: json
 
     es-sysctl:
-        labels:
-            io.rancher.container.start_once: true
         network_mode: none
         image: rawmind/alpine-sysctl:0.1
         privileged: true
