@@ -9,7 +9,7 @@ services:
 
     es-master:
         labels:
-            io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+            io.rancher.scheduler.global: true
             io.rancher.container.hostname_override: container_name
             io.rancher.sidekicks: es-sysctl
         image: docker.elastic.co/elasticsearch/elasticsearch:5.5.1
@@ -23,6 +23,8 @@ services:
             - "discovery.zen.minimum_master_nodes=3"
             - "node.master=true"
             - "node.data=true"
+        volumes:
+          - esdata:/usr/share/elasticsearch/data
         ulimits:
             memlock:
                 soft: -1
