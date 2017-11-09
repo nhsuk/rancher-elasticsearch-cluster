@@ -20,7 +20,7 @@ services:
             - "xpack.security.enabled=false"
             - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
             - "discovery.zen.ping.unicast.hosts=es-master"
-            - "discovery.zen.minimum_master_nodes=3"
+            - "discovery.zen.minimum_master_nodes=2"
             - "node.master=true"
             - "node.data=true"
         volumes:
