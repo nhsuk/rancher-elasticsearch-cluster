@@ -20,11 +20,11 @@ services:
             - "xpack.security.enabled=false"
             - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
             - "discovery.zen.ping.unicast.hosts=es-master"
-            - "discovery.zen.minimum_master_nodes=2"
+            - "discovery.zen.minimum_master_nodes=${ES_MIN_MASTER_NODES}"
             - "node.master=true"
             - "node.data=true"
         volumes:
-          - esdata:/usr/share/elasticsearch/data
+          - ${ES_DATA_VOL}:/usr/share/elasticsearch/data
         ulimits:
             memlock:
                 soft: -1
