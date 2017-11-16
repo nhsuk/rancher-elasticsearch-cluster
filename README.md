@@ -4,13 +4,14 @@
 
 ## Services deployed:
 
-- `es-master`: Elasticsearch nodes, part of the Elasticsearch cluster, one runs on every host that has an `escluster=true` tag defined.
-- Justwatch [Exporter]: Exposes Prometheus metrics on the cluster status.
-- es-client: Rancher cattle DNS service, which points the `es-client` domain name to `es-master`, for backwards compatibility with existing services.
+- *es-master*: Elasticsearch nodes, part of the Elasticsearch cluster, one runs on every host that has an `escluster=true` tag defined.
+- *es-sysctl*: Rancher Sidekick service, which updates the sysctl value for `vm.max_map_count` on the hosts running Elasticsearch. See [rawmind/alpine-sysctl].
+- *es-client*: Rancher cattle DNS service, which points the `es-client` domain name to `es-master`, for backwards compatibility with existing services.
+- *es-exporter*: Justwatch [Exporter] - Exposes Prometheus metrics on the cluster status.
 
 ## Deployment
 
-Deployment is driven by Travis (Dev and PR review deployments) and TeamCity (staging and production deployments). We use the NHS.UK [CI-Deployment] repo for deployment to the Rancher environment, this sets the following ENV variables.
+Deployment is driven by [Travis] (Dev and PR review deployments) and TeamCity (staging and production deployments). We use the NHS.UK [CI-Deployment] repo for deployment to the Rancher environment, this sets the following ENV variables.
 
 ## Environment variables
 
@@ -35,3 +36,5 @@ After the application is deployed, you can access the cluster by using the domai
    [ElasticSearch]: <https://www.elastic.co/>
    [Exporter]: <https://github.com/justwatchcom/elasticsearch_exporter>
    [Ci-Deployment]: <https://github.com/nhsuk/ci-deployment>
+   [rawmind/alpine-sysctl]: <https://hub.docker.com/r/rawmind/alpine-sysctl/>
+   [Travis]: <https://travis-ci.org/nhsuk/rancher-elasticsearch-cluster>
