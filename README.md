@@ -1,18 +1,18 @@
 # ElasticSearch on Rancher
 
-> Rancher configuration for running a Elasticsearch cluster
+> Rancher configuration for running an Elasticsearch cluster
 
 ## Services deployed:
 
-- `es-master`, Elasticsearch nodes, part of the Elasticsearch cluster, one runs on every host that has an `escluster=true` tag defined.
-- Justwatch [Exporter], exposing Prometheus metrics on the cluster status.
-- es-client, Rancher cattle DNS service, which points the `es-client` domain name to `es-master`, for backwards compatibility with existing services.
+- `es-master`: Elasticsearch nodes, part of the Elasticsearch cluster, one runs on every host that has an `escluster=true` tag defined.
+- Justwatch [Exporter]: Exposes Prometheus metrics on the cluster status.
+- es-client: Rancher cattle DNS service, which points the `es-client` domain name to `es-master`, for backwards compatibility with existing services.
 
 ## Deployment
 
-Deployment is driven by Travis (Dev and PR review deployments) and TeamCity (staging and production deployments). We use the NHSuk [CI-Deployment] repo for deployment to the Rancher environment, this sets the following ENV variables.
+Deployment is driven by Travis (Dev and PR review deployments) and TeamCity (staging and production deployments). We use the NHS.UK [CI-Deployment] repo for deployment to the Rancher environment, this sets the following ENV variables.
 
-## Env vars
+## Environment variables
 
 | Variable | Description | Default | 
 | -------- | ----------- | ------- |
