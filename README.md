@@ -1,8 +1,10 @@
 # ElasticSearch on Rancher
 
-Configuration for deploying the following services to [Rancher]:
+> Rancher configuration for running a Elasticsearch cluster
 
-- `es-master`, ElasticSearch cluster, running on every host with a `escluster` tag defined.
+## Services deployed:
+
+- `es-master`, Elasticsearch nodes, part of the Elasticsearch cluster, one runs on every host that has an `escluster=true` tag defined.
 - Justwatch [Exporter], exposing Prometheus metrics on the cluster status.
 - es-client, Rancher cattle DNS service, which points the `es-client` domain name to `es-master`, for backwards compatibility with existing services.
 
@@ -14,7 +16,7 @@ Deployment is driven by Travis (Dev and PR review deployments) and TeamCity (sta
 
 | Variable | Description | Default | 
 | -------- | ----------- | ------- |
-| `ES_MIN_MASTER_NODES` | The minimum nodes required to run the host  | `2` |
+| `ES_MIN_MASTER_NODES` | The minimum nodes required to run the cluster | `2` |
 | `ES_DATA_VOL` | The name of the local volume on the host to use | `esdata` |
 
 ## How it works
